@@ -1,16 +1,3 @@
-T | 1 | jumping around
-T | 0 | jumping high
-T | 0 | jump
-D | 0 | holiday | 01 Jan 2025
-E | 1 | gym bros | Mon | 2pm | 5pm
-E | 1 | play date with tom | Mon | 2pm | 5pm
-E | 1 | jump around | Tue | 3pm | 6pm
-D | 0 | asda | null
-D | 0 | asda | 10 Oct 2023
-D | 0 | asaa | null
-D | 0 | asda | null
-D | 1 | fly | 20 Dec 2023
-T | 1 | asa
-T | 0 | as as asda
-T | 0 | asda
-E | 0 | asda | Mon | 2pm | 3pm
+T | 1 | help session
+T | 1 | jump
+E | 0 | bake cheese cake | Mon | 2pm | 5pm

@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Deadline extends Task {
 
+    private static final String TASK_LETTER = "D";
     protected String endDate;
     protected LocalDate date;
     /**
@@ -44,7 +45,7 @@ public class Deadline extends Task {
     // Returns the letter representing deadline.
     @Override
     public String getTaskLetter() {
-        return "D";
+        return TASK_LETTER;
     }
 
     /**

@@ -21,6 +21,6 @@ public class ByeCommand extends Command {
     @Override
     public String execute(TaskList taskList, Storage storage, Ui ui) {
         this.updateIsExitToTrue();
-        return "ByeCommand";
+        return "GoodBye";
     }
 }

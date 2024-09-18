@@ -4,6 +4,7 @@ package bob.task;
  * Task that are meant to be done with no specified deadline.
  */
 public class Todo extends Task {
+    private static final String TASK_LETTER = "T";
     /**
      * Constructor to initialise a task.
      *
@@ -26,7 +27,7 @@ public class Todo extends Task {
     // Returns the letter representing todo.
     @Override
     public String getTaskLetter() {
-        return "T";
+        return TASK_LETTER;
     }
 
     /**

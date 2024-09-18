@@ -101,12 +101,14 @@ public class TaskList {
      * @param isCompleted Whether the task is marked as completed or incompleted.
      */
     public void updateMark(String input, String[] inputWords, boolean isCompleted) {
+        int itemNumberByUser = Integer.valueOf(inputWords[1]);
         if (inputWords.length == 1) {
             System.out.println("Please input which item number you want to mark.");
-        } else if (this.records.size() < Integer.valueOf(inputWords[1]) || Integer.valueOf(inputWords[1]) <= 0) {
+        } else if (this.records.size() < itemNumberByUser || itemNumberByUser <= 0) {
             System.out.println("Item index out of range.");
         } else {
-            Task currTask = this.records.get(Integer.parseInt(inputWords[1]) - 1);
+            Task currTask = this.records.get(itemNumberByUser - 1);
+            assert currTask != null : "Updated task cannot be null";
             if (isCompleted) {
                 currTask.markTask(true);
             } else {
@@ -186,6 +188,7 @@ public class TaskList {
         default:
             throw new InvalidTaskException("Unable to create task. Please key in a valid keyword.");
         }
+        assert newTask != null : "New task created for get task cannot be null";
         return newTask;
     }
 
@@ -286,7 +289,7 @@ public class TaskList {
                     throw new InvalidTaskException("OOPS!!! The event description cannot be empty.");
                 }
                 throw new InvalidTaskException("Invalid use of event format."
-                        + "Should be  '<description> /from <day> <start_time> /to <end_time>'");
+                        + "Should be '<description> /from <day> <start_time> /to <end_time>'");
             }
             return subString2[0].trim();
 
@@ -299,6 +302,7 @@ public class TaskList {
      * Saves tasks updates by user to records.
      */
     public void saveRecords(Storage storage) {
+        assert storage != null : "Need storage in order to save records.";
         storage.saveRecordsToStorage(records);
     }
 
@@ -323,6 +327,7 @@ public class TaskList {
                 }
             }
             if (isTargetPresent == true) {
+                assert matchingRecords != null : "If flagged as present, target must be in matching records";
                 Ui.showSearchResults(matchingRecords);
             } else {
                 Ui.showEmptySearchResults();
@@ -336,6 +341,7 @@ public class TaskList {
      * @return
      */
     public int getRecordSize() {
+        assert this.records != null : "Records must be present to get record size.";
         return this.records.size();
     }
 
@@ -346,6 +352,7 @@ public class TaskList {
      * @return
      */
     public Task getIndexedTask(int index) {
+        assert this.records != null : "Records must be present to get indexed task.";
         return this.records.get(index - 1);
     }
 
@@ -353,6 +360,7 @@ public class TaskList {
      * Returns an arraylist of records.
      */
     public ArrayList<Task> getAllRecords() {
+        assert this.records != null : "Records must be present to get all records.";
         return this.records;
     }
 
@@ -362,6 +370,7 @@ public class TaskList {
      * @param index Index that corresponds to the task visible to the user.
      */
     public void removeRecord(int index) {
+        assert this.records != null : "Records must be present to remove a single record.";
         this.records.remove(index - 1);
         this.latestRecordedIndex -= 1;
     }
@@ -373,6 +382,7 @@ public class TaskList {
      * @return
      */
     public String getDeletedTaskString(int index) {
+        assert index > 0 : "Index of deleted task should be greater than zero to get deleted task string.";
         String deletedTaskString = "Noted. I've removed this task:\n\t"
                 + records.get(index - 1).getTaskListItem()
                 + "\n\t"

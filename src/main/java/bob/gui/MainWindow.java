@@ -1,6 +1,7 @@
 package bob.gui;
 
 import bob.Bob;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -43,13 +44,23 @@ public class MainWindow extends AnchorPane {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
+        terminateIfBye(input);
         String response = bob.getResponse(input);
         String commandType = bob.getCommandType();
+        assert response != null : "Response from execution not null";
+        assert commandType != null : "Command Type not null.";
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
                 DialogBox.getDukeDialog(response, dukeImage, commandType)
         );
         userInput.clear();
+    }
+
+    @FXML
+    private void terminateIfBye(String input) {
+        if (input.equals("bye")) {
+            Platform.exit();
+        }
     }
 }
 

@@ -5,9 +5,11 @@ package bob.task;
  */
 public class Event extends Task {
 
+    private static final String TASK_LETTER = "E";
     protected String startDay;
     protected String startTime;
     protected String endTime;
+
 
     /**
      * Constructor to initialise a task.
@@ -22,7 +24,7 @@ public class Event extends Task {
     }
 
     /**
-     * Constructor to initialise a task preivously recorded.
+     * Constructor to initialise a task previously recorded.
      *
      * @param description Input based on user.
      */
@@ -36,7 +38,7 @@ public class Event extends Task {
     // Returns the letter representing event.
     @Override
     public String getTaskLetter() {
-        return "E";
+        return TASK_LETTER;
     }
 
     /**
